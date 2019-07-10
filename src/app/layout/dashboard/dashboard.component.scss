@@ -1,0 +1,100 @@
+.dashboard {
+    .row {
+        .form-group {
+            .form-control {
+                &.inValid {
+                    border-color: #dc3545;                    
+                }
+            }
+        }
+        .date-time-section {
+            .heading-txt {
+                font-size: 20px;
+            }
+            .changes-btn {
+                display: flex;
+                justify-content: space-between;
+
+                .btn.active {
+                    color: #fff;
+                    background-color: #007bff;
+                    border-color: #007bff;
+                    box-shadow: none;
+                }
+            }
+            .nota {
+                border: 2px solid #8eaccc;
+                color: #1466bd;
+
+                .title {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                .description {
+                    font-size: 14px;
+                }
+            }
+        }
+        .buttons {
+            .btn {
+                display: block;
+                width: 150px;
+
+                @media only screen and (max-width: 767px) {
+                    display: inline-block;
+                }
+            }
+
+            .btn-success {
+                @media only screen and (max-width: 767px) {
+                    margin: 0px 10px 0px 0px !important;
+                }
+            }
+        }
+    }
+
+    .row {
+        .table {
+            border: 1px solid #4588ca;
+
+            td {
+                border: 1px solid #4588ca;
+                padding: 3px 10px;
+            }
+        }
+    }
+
+    .btn-export {
+        position: relative;
+        bottom: 10px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btm-nota {
+        position: relative;
+        bottom: 10px;
+        width: 80%;
+        margin-left: 20px;
+
+        @media only screen and (max-width: 767px) {
+            position: relative;
+        }
+        
+        .nota {
+            border: 2px solid #8eaccc;
+            color: #1466bd;
+
+            .title {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+        }
+
+    }
+}
