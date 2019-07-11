@@ -14,6 +14,13 @@
             .changes-btn {
                 display: flex;
                 justify-content: space-between;
+                flex-wrap: wrap;
+
+                .btn  {
+                    @media only screen and (max-width: 767px) {
+                        margin-top: 20px;
+                    }
+                }
 
                 .btn.active {
                     color: #fff;
@@ -61,6 +68,24 @@
             td {
                 border: 1px solid #4588ca;
                 padding: 3px 10px;
+
+                img {
+                    width: 100px;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .table-pagination {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            .pageitems {
+                display: flex;
+                align-items: baseline;
             }
         }
     }

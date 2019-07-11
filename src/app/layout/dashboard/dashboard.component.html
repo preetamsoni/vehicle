@@ -23,11 +23,9 @@
                                     <input class="form-control" formControlName="from_date" id="from" type="date">
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 p-0">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="form-group">
-                                    <!-- <label class="form-control-label" for="from-time">Ora</label> -->
                                     <ngb-timepicker formControlName="from_time" [meridian]="OFF"></ngb-timepicker>
-                                    <!-- <input class="form-control" formControlName="from_time" id="from-time" type="time"> -->
                                 </div>
                             </div>
                         </div>
@@ -41,11 +39,9 @@
                                     <input class="form-control"  formControlName="to_date" id="to" type="date">
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 p-0">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="form-group">
                                     <ngb-timepicker formControlName="to_time" [meridian]="OFF"></ngb-timepicker>
-                                    <!-- <label class="form-control-label" for="to-time">Ora</label>
-                                    <input class="form-control" formControlName="to_time" id="to-time" type="time"> -->
                                 </div>
                             </div>
                         </div>
@@ -61,7 +57,7 @@
                     </div>
 
                     <ng-container *ngIf="!isExpand">
-                        <div class="col-md-12 col-sm-12 nota mt-5">
+                        <div class="col-md-12 col-sm-12 nota mt-5 ml-3 mr-3">
                             <div class="title pt-3">NOTA:</div>
                             <div class="description pb-2">
                                 Queste sono le 5 possibili ricerche , oltre alla ricerca libera che dovranno essere
@@ -75,7 +71,7 @@
             </div>
             <div class="col-md-2 col-sm-12 buttons mt-3">
                 <button type="button" class="btn btn-success mb-3" (click)="reset()">Reset</button>
-                <button type="button" class="btn btn-primary" (click)="expand()">CERCA</button>
+                <button type="submit" class="btn btn-primary" (click)="expand()">CERCA</button>
             </div>
         </div>
 
@@ -85,47 +81,44 @@
                     <div class="col-md-12 col-sm-12 mt-5">
                     <table class="table table-bordered">
                             <tbody>
-                            <tr>
-                                <td>AASDDFFRG234CFDF</td>
-                                <td>11/02/2019</td>
-                                <td>12:23:00</td>
-                                <td>Peso, dimensione, CAP, lavorazione, GIRO/Destino</td>
-                            </tr>
-                            <tr>
-                                <td>ADS23CDV44</td>
-                                <td>11/02/2019</td>
-                                <td>12:23:00</td>
-                                <td>Peso, dimensione, CAP, lavorazione, GIRO/Destino</td>
-                            </tr>
-                            <tr>
-                                <td>ADDSD234RRG</td>
-                                <td>11/02/2019</td>
-                                <td>12:23:00</td>
-                                <td>Peso, dimensione, CAP, lavorazione, GIRO/Destino</td>
-                            </tr>
+                                <ng-container *ngFor="let item of cercaData;let idx = index;">
+                                    <tr>
+                                        <td>{{item.Ldv}}</td>
+                                        <td>{{item.date}}</td>
+                                        <td>{{item.time}}</td>
+                                        <td style="border-right: none;">{{item.Weight}}, {{item.Width}}, {{item.PostalCode}}, {{item.SortingProcess}}, GIRO/Destino</td>
+                                        <td style="border-left: none;">
+                                            <span class="pl-3" (click)="item.isCollapsed = !item.isCollapsed" [attr.aria-expanded]="!item.isCollapsed" [attr.aria-controls]="idx">
+                                                <i class="fa" [ngClass]="{'fa-plus': !item.isCollapsed, 'fa-minus': item.isCollapsed}" style="cursor: pointer"></i>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr id="{{idx}}" [ngbCollapse]="!item.isCollapsed">
+                                        <td colspan="5">
+                                            <ng-container *ngFor="let lnk of item.SortedParcelImages;let i = index;">
+                                                <img [src]="lnk" alt="{{i}}" (click)="open(content, lnk)">
+                                            </ng-container>
+                                        </td>
+                                    </tr>
+                                </ng-container>
                             </tbody>
                     </table>
                     </div>
-                    <div class="col-md-4 offset-md-4 col-sm-6">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <div class="table-pagination pt-3">
+                        <ngb-pagination [collectionSize]="30" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+                        <div class="pageitems pl-5">
+                            <span>Itemes per Page : </span>
+                            <div class="form-group pl-2">
+                                <select class="form-control" formControlName="itemsPerPage">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
             </ng-container>
         </div>
@@ -152,3 +145,14 @@
         </div>
     </form>
 </div>
+
+<ng-template #content let-modal>
+    <div class="modal-body">
+        <div class="header text-right pb-3">
+            <i (click)="modal.dismiss()" class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div class="modal-img pb-4">
+            <img [src]="selectedImg" alt="">
+        </div>
+    </div>
+</ng-template>

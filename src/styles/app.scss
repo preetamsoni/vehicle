@@ -10,3 +10,24 @@
         display: none !important;
     }
 }
+
+.image-modal {
+    .modal-dialog {
+        .modal-content {
+            .modal-body {
+                .header {
+                    i {
+                        font-size: 24px;
+                        cursor: pointer;
+                    }
+                }
+                .modal-img {
+                    text-align: center;
+                    img {
+                        width: 400px;
+                    }
+                }
+            }
+        }
+    }
+}
