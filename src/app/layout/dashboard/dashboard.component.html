@@ -1,7 +1,7 @@
 <div class="dashboard">
     <form class="pt-3 pb-3" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
         <div class="row">
-            <div class="col-md-2 col-sm-12">
+            <div class="col-lg-2 col-md-4 col-sm-12">
                 <h4>Ricerca LDV</h4>
                 <div class="form-group">
                     <label class="form-control-label" for="ldv">LDV (INTERA o ESTRATTA)</label>
@@ -12,18 +12,18 @@
                 </div>
                 <h4>Lista LDV trovate</h4>
             </div>
-            <div class="col-md-8 col-sm-12 date-time-section">
+            <div class="col-lg-8 col-md-12 col-sm-10 date-time-section">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                        <div class="heading-txt">Inizio ricerca (una settimana fa)</div>
                        <div class="row pt-2">
-                            <div class="col-md-8 col-sm-12">
+                            <div class="col-md-7 col-sm-6">
                                 <div class="form-group pt-1">
                                     <label class="form-control-label" for="from">Data</label>
                                     <input class="form-control" formControlName="from_date" id="from" type="date">
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-5 col-sm-6">
                                 <div class="form-group">
                                     <ngb-timepicker formControlName="from_time" [meridian]="OFF"></ngb-timepicker>
                                 </div>
@@ -33,13 +33,13 @@
                     <div class="col-md-6 col-sm-12">
                         <div class="heading-txt">Fine ricerca (oggi)</div>
                         <div class="row pt-2">
-                            <div class="col-md-8 col-sm-12">
+                            <div class="col-md-7 col-sm-6">
                                 <div class="form-group pt-1">
                                     <label class="form-control-label" for="to">Data</label>
                                     <input class="form-control"  formControlName="to_date" id="to" type="date">
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-5 col-sm-6">
                                 <div class="form-group">
                                     <ngb-timepicker formControlName="to_time" [meridian]="OFF"></ngb-timepicker>
                                 </div>
@@ -57,7 +57,7 @@
                     </div>
 
                     <ng-container *ngIf="!isExpand">
-                        <div class="col-md-12 col-sm-12 nota mt-5 ml-3 mr-3">
+                        <div class="col-lg-12 col-md-8 col-sm-10 nota mt-5 ml-3 mr-3">
                             <div class="title pt-3">NOTA:</div>
                             <div class="description pb-2">
                                 Queste sono le 5 possibili ricerche , oltre alla ricerca libera che dovranno essere
@@ -69,7 +69,7 @@
                     </ng-container>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-12 buttons mt-3">
+            <div class="col-lg-2 col-md-12 col-sm-12 buttons mt-3">
                 <button type="button" class="btn btn-success mb-3" (click)="reset()">Reset</button>
                 <button type="submit" class="btn btn-primary" (click)="expand()">CERCA</button>
             </div>
@@ -78,7 +78,7 @@
         
         <div class="row">
             <ng-container *ngIf="isExpand">
-                    <div class="col-md-12 col-sm-12 mt-5">
+                    <div class="col-md-12 col-sm-12 mt-5 table-responsive">
                     <table class="table table-bordered">
                             <tbody>
                                 <ng-container *ngFor="let item of cercaData;let idx = index;">

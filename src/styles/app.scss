@@ -25,6 +25,10 @@
                     text-align: center;
                     img {
                         width: 400px;
+
+                        @media only screen and (max-width: 767px) {
+                            width: 270px;
+                        }
                     }
                 }
             }

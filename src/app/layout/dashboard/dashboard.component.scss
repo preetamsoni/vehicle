@@ -7,9 +7,14 @@
                 }
             }
         }
+
         .date-time-section {
             .heading-txt {
                 font-size: 20px;
+
+                @media only screen and (max-width: 1024px) {
+                    font-size: 18px;
+                }
             }
             .changes-btn {
                 display: flex;
@@ -48,13 +53,13 @@
                 display: block;
                 width: 150px;
 
-                @media only screen and (max-width: 767px) {
+                @media only screen and (max-width: 1000px) {
                     display: inline-block;
                 }
             }
 
             .btn-success {
-                @media only screen and (max-width: 767px) {
+                @media only screen and (max-width: 1000px) {
                     margin: 0px 10px 0px 0px !important;
                 }
             }
