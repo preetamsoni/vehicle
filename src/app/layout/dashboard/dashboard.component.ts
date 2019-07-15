@@ -129,7 +129,7 @@ export class DashboardComponent implements OnInit {
 }
 
 export function uppercaseValidator(c: FormControl) {
-    let regex = /^[A-Z]+$/g
+    let regex = /^[A-Z0-9]+$/g
     if (regex.test(c.value)) {
       return null;
     } else {
